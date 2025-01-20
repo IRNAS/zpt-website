@@ -1,0 +1,211 @@
+---
+// Remove Supabase related code
+const formSubmitted = Astro.request.method === 'POST';
+let submitError = false;
+
+if (formSubmitted) {
+  try {
+    const data = await Astro.request.formData();
+    const formData = {
+      fullName: data.get('fullName'),
+      email: data.get('email'),
+      telephone: data.get('telephone'),
+      organization: data.get('organization')
+    };
+
+    const response = await fetch('YOUR_GOOGLE_SCRIPT_URL', {
+      method: 'POST',
+      body: JSON.stringify(formData),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to submit form');
+    }
+  } catch (error) {
+    console.error('Error submitting form:', error);
+    submitError = true;
+  }
+}
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ZPT - Electronics Production Testing Ecosystem</title>
+  </head>
+  <body class="min-h-screen bg-gray-50">
+    <!-- Hero Section -->
+    <section class="relative h-screen overflow-hidden">
+      <video 
+        autoplay 
+        loop 
+        muted 
+        playsinline 
+        class="absolute w-full h-full object-cover"
+      >
+        <source src="https://irnas-public-assets.s3.amazonaws.com/videos/electronics-testing.mp4" type="video/mp4">
+      </video>
+      <div class="absolute inset-0 bg-black/50"></div>
+      <div class="relative container mx-auto px-6 h-full flex items-center">
+        <div class="max-w-2xl text-white">
+          <h1 class="text-5xl font-bold mb-6">
+            Transform Your Electronics Testing Process
+          </h1>
+          <p class="text-xl mb-8">
+            A complete ecosystem of hardware, firmware, and cloud solutions for seamless electronics production testing.
+          </p>
+          <a href="#contact" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors inline-block">
+            Get Started
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="py-20 bg-white" id="benefits">
+      <div class="container mx-auto px-6">
+        <h2 class="text-4xl font-bold text-center mb-16">Why Choose ZPT?</h2>
+        <div class="grid md:grid-cols-3 gap-12">
+          <div class="text-center">
+            <div class="bg-blue-100 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
+              <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-600 w-8 h-8" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-4">Early Integration</h3>
+            <p class="text-gray-600">
+              Start testing from prototype phase, not as an afterthought
+            </p>
+          </div>
+          <div class="text-center">
+            <div class="bg-blue-100 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
+              <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-600 w-8 h-8" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-4">Cloud Monitoring</h3>
+            <p class="text-gray-600">
+              Real-time tracking and remote configuration of all systems
+            </p>
+          </div>
+          <div class="text-center">
+            <div class="bg-blue-100 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
+              <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-600 w-8 h-8" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-4">Minimal Overhead</h3>
+            <p class="text-gray-600">
+              Reduced effort and cost for implementation
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="py-20 bg-gray-50" id="how-it-works">
+      <div class="container mx-auto px-6">
+        <h2 class="text-4xl font-bold text-center mb-16">How It Works</h2>
+        <div class="bg-white p-8 rounded-lg shadow-lg">
+          <div class="aspect-[16/9] bg-gray-100 rounded-lg flex items-center justify-center">
+            <p class="text-gray-500">System diagram will be placed here</p>
+          </div>
+          <p class="text-gray-600 mt-8 text-center max-w-3xl mx-auto">
+            Our comprehensive testing ecosystem seamlessly integrates hardware interfaces, automated testing procedures, and cloud-based monitoring to ensure reliable electronics production.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-20 bg-white" id="contact">
+      <div class="container mx-auto px-6">
+        <div class="max-w-2xl mx-auto">
+          <h2 class="text-4xl font-bold text-center mb-16">Get Started with ZPT</h2>
+          {formSubmitted && !submitError && 
+            <div class="text-center text-green-600 mb-8">
+              Thank you for your message! We'll get back to you soon.
+            </div>
+          }
+          {submitError && 
+            <div class="text-center text-red-600 mb-8">
+              Sorry, there was an error submitting the form. Please try again.
+            </div>
+          }
+          <form method="POST" class="space-y-6">
+            <div>
+              <label for="fullName" class="block text-sm font-medium text-gray-700 mb-1">
+                Full Name *
+              </label>
+              <input
+                type="text"
+                id="fullName"
+                name="fullName"
+                required
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              />
+            </div>
+
+            <div>
+              <label for="email" class="block text-sm font-medium text-gray-700 mb-1">
+                Email *
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              />
+            </div>
+
+            <div>
+              <label for="telephone" class="block text-sm font-medium text-gray-700 mb-1">
+                Telephone (Optional)
+              </label>
+              <input
+                type="tel"
+                id="telephone"
+                name="telephone"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              />
+            </div>
+
+            <div>
+              <label for="organization" class="block text-sm font-medium text-gray-700 mb-1">
+                Organization (Optional)
+              </label>
+              <input
+                type="text"
+                id="organization"
+                name="organization"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              />
+            </div>
+
+            <button
+              type="submit"
+              class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors flex items-center justify-center gap-2"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
