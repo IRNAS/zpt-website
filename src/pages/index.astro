@@ -1,211 +1,400 @@
 ---
-// Remove Supabase related code
-const formSubmitted = Astro.request.method === 'POST';
-let submitError = false;
+import Layout from '../layouts/Layout.astro';
+import ContactForm from '../components/ContactForm.astro';
 
-if (formSubmitted) {
-  try {
-    const data = await Astro.request.formData();
-    const formData = {
-      fullName: data.get('fullName'),
-      email: data.get('email'),
-      telephone: data.get('telephone'),
-      organization: data.get('organization')
-    };
-
-    const response = await fetch('https://docs.google.com/spreadsheets/d/1YGoiYdQUowwh2L-dHsyPx5ogMEn43C0UNRyp4DsRgyo/edit?usp=sharing', {
-      method: 'POST',
-      body: JSON.stringify(formData),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-
-    if (!response.ok) {
-      throw new Error('Failed to submit form');
-    }
-  } catch (error) {
-    console.error('Error submitting form:', error);
-    submitError = true;
-  }
-}
+const benefits = [
+	{
+		title: "5x Faster Deployment",
+		description: "Revolutionary fiber optic infrastructure that can be laid 5 times faster than traditional systems.",
+		icon: "⚡"
+	},
+	{
+		title: "10x Cost Reduction",
+		description: "Significantly more cost-effective than traditional VHF systems, making cave communication accessible.",
+		icon: "💰"
+	},
+	{
+		title: "Ultra-Lightweight",
+		description: "Carry up to 1km of infrastructure with just 8kg - perfect for challenging cave environments.",
+		icon: "🎯"
+	},
+	{
+		title: "Smartphone Integration",
+		description: "Use your existing smartphones for underground communication - no specialized equipment needed.",
+		icon: "📱"
+	}
+];
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ZPT - Electronics Production Testing Ecosystem</title>
-  </head>
-  <body class="min-h-screen bg-gray-50">
-    <!-- Hero Section -->
-    <section class="relative h-screen overflow-hidden">
-      <video 
-        autoplay 
-        loop 
-        muted 
-        playsinline 
-        class="absolute w-full h-full object-cover"
-      >
-        <source src="https://www.youtube.com/embed?v=VcFE7uQ5MRo">
-      </video>
-      <div class="absolute inset-0 bg-black/50"></div>
-      <div class="relative container mx-auto px-6 h-full flex items-center">
-        <div class="max-w-2xl text-white">
-          <h1 class="text-5xl font-bold mb-6">
-            Transform Your Electronics Testing Process
-          </h1>
-          <p class="text-xl mb-8">
-            A complete ecosystem of hardware, firmware, and cloud solutions for seamless electronics production testing.
-          </p>
-          <a href="#contact" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors inline-block">
-            Get Started
-          </a>
-        </div>
-      </div>
-    </section>
+<Layout
+	title="ZPT - Revolutionary Electronics Production Testing Ecosystem"
+	description="ZPT is an electronics production testing ecosystem of products that helps developers, product manufactures and PCB assembly houses to deliver tested and issue free products to the market with minimal cost and development overhead."
+>
+	<header class="header">
+		<div class="logo">
+			<!--img src="C:\Users\Luka\Downloads\locave\src\pages\Logo.png" alt="LoCave" width="120" height="40"-->
+		</div>
+	</header>
+	<main>
+		<!-- Hero Section -->
+		<section class="hero">
+			<video autoplay loop muted playsinline class="hero-video">
+				<source src="/_title-video.mp4" type="video/mp4">
+			</video>
+			<div class="video-overlay"></div>
+			<div class="hero-grid">
 
-    <!-- Benefits Section -->
-    <section class="py-20 bg-white" id="benefits">
-      <div class="container mx-auto px-6">
-        <h2 class="text-4xl font-bold text-center mb-16">Why Choose ZPT?</h2>
-        <div class="grid md:grid-cols-3 gap-12">
-          <div class="text-center">
-            <div class="bg-blue-100 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
-              <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-600 w-8 h-8" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
-            </div>
-            <h3 class="text-xl font-semibold mb-4">Early Integration</h3>
-            <p class="text-gray-600">
-              Start testing from prototype phase, not as an afterthought
-            </p>
-          </div>
-          <div class="text-center">
-            <div class="bg-blue-100 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
-              <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-600 w-8 h-8" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
-            </div>
-            <h3 class="text-xl font-semibold mb-4">Cloud Monitoring</h3>
-            <p class="text-gray-600">
-              Real-time tracking and remote configuration of all systems
-            </p>
-          </div>
-          <div class="text-center">
-            <div class="bg-blue-100 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
-              <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-600 w-8 h-8" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-            </div>
-            <h3 class="text-xl font-semibold mb-4">Minimal Overhead</h3>
-            <p class="text-gray-600">
-              Reduced effort and cost for implementation
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
+				<div class="hero-content">
+					<h1>Transform Your Electronics Testing Process</h1>
+					<p class="hero-subtitle">
+						A complete ecosystem of hardware, firmware, and cloud solutions for seamless electronics production testing.
+					</p>
+					<div class="cta-group">
+						<a href="#contact" class="cta-button">Request Demo</a>
+						<a href="#features" class="cta-button secondary">Learn More</a>
+					</div>
+				</div>
 
-    <!-- How It Works Section -->
-    <section class="py-20 bg-gray-50" id="how-it-works">
-      <div class="container mx-auto px-6">
-        <h2 class="text-4xl font-bold text-center mb-16">How It Works</h2>
-        <div class="bg-white p-8 rounded-lg shadow-lg">
-          <div class="aspect-[16/9] bg-gray-100 rounded-lg flex items-center justify-center">
-            <p class="text-gray-500">System diagram will be placed here</p>
-          </div>
-          <p class="text-gray-600 mt-8 text-center max-w-3xl mx-auto">
-            Our comprehensive testing ecosystem seamlessly integrates hardware interfaces, automated testing procedures, and cloud-based monitoring to ensure reliable electronics production.
-          </p>
-        </div>
-      </div>
-    </section>
+			</div>
+		</section>
 
-    <!-- Contact Section -->
-    <section class="py-20 bg-white" id="contact">
-      <div class="container mx-auto px-6">
-        <div class="max-w-2xl mx-auto">
-          <h2 class="text-4xl font-bold text-center mb-16">Get Started with ZPT</h2>
-          {formSubmitted && !submitError && 
-            <div class="text-center text-green-600 mb-8">
-              Thank you for your message! We'll get back to you soon.
-            </div>
-          }
-          {submitError && 
-            <div class="text-center text-red-600 mb-8">
-              Sorry, there was an error submitting the form. Please try again.
-            </div>
-          }
-          <form method="POST" class="space-y-6">
-            <div>
-              <label for="fullName" class="block text-sm font-medium text-gray-700 mb-1">
-                Full Name *
-              </label>
-              <input
-                type="text"
-                id="fullName"
-                name="fullName"
-                required
-                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
-            </div>
+		<!-- Benefits Section >
+		<section id="benefits" class="benefits">
+			<h2>Why Choose LoCave?</h2>
+			<div class="benefits-grid">
+				{benefits.map(benefit => (
+					<div class="benefit-card">
+						<div class="benefit-icon">{benefit.icon}</div>
+						<h3>{benefit.title}</h3>
+						<p>{benefit.description}</p>
+					</div>
+				))}
+			</div>
+		</section -->
 
-            <div>
-              <label for="email" class="block text-sm font-medium text-gray-700 mb-1">
-                Email *
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                required
-                pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}"
-                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
-            </div>
+		<!--Features Section -->
+		<section id="features" class="features">
+			<div class="features-grid">
+				<div class="feature-content">
+					<h2>How it works?</h2>
+					<p>Our comprehensive testing ecosystem seamlessly integrates hardware interfaces, automated testing procedures, and cloud-based monitoring to ensure reliable electronics production.</p>
+					<ul>
+						<li>Comprehensive Functional Validation</li>
+						<li>Seamless Integration into Development Process</li>
+						<li>Reduced Implementation Effort</li>
+						<li>Real-Time Monitoring and Firmware Validation</li>
+					</ul>
+				</div>
+				<div class="feature-image">
+					<img src='/_background.png') alt="ZPT automated electronics testing system in action." />
+				</div>
+			</div>
+		</section>
 
-            <div>
-              <label for="telephone" class="block text-sm font-medium text-gray-700 mb-1">
-                Telephone (Optional)
-              </label>
-              <input
-                type="tel"
-                id="telephone"
-                name="telephone"
-                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
-            </div>
 
-            <div>
-              <label for="organization" class="block text-sm font-medium text-gray-700 mb-1">
-                Organization (Optional)
-              </label>
-              <input
-                type="text"
-                id="organization"
-                name="organization"
-                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
-            </div>
+		<!-- Contact Section -->
+		<section id="contact" class="contact">
+			<h2>Transform Your Electronics Testing Process</h2>
+			<p>Streamlined traceability everywhere.</p>
+			<ContactForm />
+		</section>
+	</main>
+</Layout>
 
-            <button
-              type="submit"
-              class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors flex items-center justify-center gap-2"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
-              Submit
-            </button>
-          </form>
-        </div>
-      </div>
-    </section>
+<style>
+	main {
+		color: #1f2937;
+	}
+	
+	.header {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		padding: 1rem 2rem;
+		background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6));
+		background-size: cover;
+		background-position: center;
+		backdrop-filter: blur(5px);
+		z-index: 100;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	}
 
-    <script>
-      // Smooth scroll for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-          document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-          });
-        });
-      });
-    </script>
-  </body>
-</html>
+	.logo {
+		height: 160px;
+		background: url('/_Logo.png');
+		background-size: contain;
+		background-repeat: no-repeat;
+	}
+
+	.logo img {
+		filter: brightness(0) invert(1);
+	}
+
+	.hero {
+		position: relative;
+		height: 100vh;
+		width: 100%;
+		overflow: hidden;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		/*color: white;*/
+	}
+
+	.video-overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.5); /* Adjust opacity here */
+		z-index: 0;
+	}
+	.hero-video {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		z-index: -1;
+	}
+
+
+	.hero-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 4rem;
+		max-width: 1200px;
+		margin: 0 auto;
+		align-items: center;
+	}
+
+	.hero-content {
+		position: relative;
+		max-width: 600px;
+		color: white;
+		z-index: 1;
+	}
+
+	h1 {
+		font-size: 3.5rem;
+		font-weight: 800;
+		margin-bottom: 1rem;
+		line-height: 1.1;
+	}
+
+	.hero-subtitle {
+		font-size: 1.5rem;
+		margin-bottom: 2rem;
+		opacity: 0.9;
+		color: white;
+		z-index: 1;
+	}
+
+	.cta-group {
+		display: flex;
+		gap: 1rem;
+	}
+
+	.cta-button {
+		background: rgb(var(--primary));
+		color: white;
+		padding: 1rem 2.5rem;
+		border-radius: 100px;
+		text-decoration: none;
+		font-weight: 600;
+		transition: all 0.3s ease;
+		position: relative;
+		overflow: hidden;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		box-shadow: 0 4px 15px rgba(var(--primary), 0.3);
+	}
+
+	.cta-button::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(
+			120deg,
+			transparent,
+			rgba(255, 255, 255, 0.2),
+			transparent
+		);
+		transform: translateX(-100%);
+		transition: 0.6s;
+	}
+
+	.cta-button:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 6px 20px rgba(var(--primary), 0.4);
+	}
+
+	.cta-button:hover::before {
+		transform: translateX(100%);
+	}
+
+	.cta-button.secondary {
+		background: transparent;
+		border: 2px solid rgba(255, 255, 255, 0.8);
+		box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+	}
+
+	.cta-button.secondary:hover {
+		background: rgba(255, 255, 255, 0.1);
+		box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
+	}
+
+	.hero-video {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 100%;
+		aspect-ratio: 16/9;
+		border-radius: 1rem;
+		overflow: hidden;
+		box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+	}
+
+	.video-frame {
+		width: 100%;
+		height: 100%;
+		border-radius: 1rem;
+		display: block;
+
+	}
+
+	.benefits {
+		padding: 4rem 2rem;
+		background: #f3f4f6;
+	}
+
+	.benefits h2 {
+		text-align: center;
+		font-size: 2.5rem;
+		margin-bottom: 3rem;
+	}
+
+	.benefits-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		gap: 2rem;
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+
+	.benefit-card {
+		background: white;
+		padding: 2rem;
+		border-radius: 0.5rem;
+		box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+	}
+
+	.benefit-icon {
+		font-size: 2rem;
+		margin-bottom: 1rem;
+	}
+
+	.features {
+		padding: 4rem 2rem;
+		background: white;
+	}
+
+	.features-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 4rem;
+		max-width: 1200px;
+		margin: 0 auto;
+		align-items: center;
+	}
+
+	.feature-content {
+		max-width: 500px;
+	}
+
+	.features h2 {
+		font-size: 2.5rem;
+		margin-bottom: 2rem;
+	}
+
+	.features ul {
+		list-style-type: none;
+		padding: 0;
+	}
+
+	.features li {
+		margin-bottom: 1rem;
+		padding-left: 2rem;
+		position: relative;
+	}
+
+	.features li::before {
+		content: "✓";
+		position: absolute;
+		left: 0;
+		color: rgb(var(--primary));
+		font-weight: bold;
+	}
+
+	.feature-image {
+		border-radius: 1rem;
+		overflow: hidden;
+		box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+	}
+
+	.feature-image img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		border-radius: 1rem;
+	}
+
+	.contact {
+		padding: 4rem 2rem;
+		background: #f3f4f6;
+		text-align: center;
+	}
+
+	.contact h2 {
+		font-size: 2.5rem;
+		margin-bottom: 1rem;
+	}
+
+	.contact p {
+		margin-bottom: 3rem;
+	}
+
+	@media (max-width: 768px) {
+		.hero-grid, .features-grid {
+			grid-template-columns: 1fr;
+			gap: 2rem;
+		}
+
+		h1 {
+			font-size: 2.5rem;
+		}
+		
+		.hero-subtitle {
+			font-size: 1.25rem;
+		}
+		
+		.cta-group {
+			flex-direction: column;
+		}
+		
+		.benefits-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.feature-content {
+			max-width: 100%;
+		}
+	}
+</style>

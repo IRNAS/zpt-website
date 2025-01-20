@@ -1,0 +1,75 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="description" content="ZPT is an electronics production testing ecosystem of products that helps developers, product manufactures and PCB assembly houses to deliver tested and issue free products to the market with minimal cost and development overhead."><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.16.18"><!-- SEO Meta Tags --><title>ZPT - Revolutionary Electronics Production Testing Ecosystem</title><meta name="description" content="ZPT is an electronics production testing ecosystem of products that helps developers, product manufactures and PCB assembly houses to deliver tested and issue free products to the market with minimal cost and development overhead."><meta name="keywords" content="cave communication, underground rescue, cave exploration, fiber optic communication, cave safety, cave research"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:title" content="ZPT - Revolutionary Electronics Production Testing Ecosystem"><meta property="og:description" content="ZPT is an electronics production testing ecosystem of products that helps developers, product manufactures and PCB assembly houses to deliver tested and issue free products to the market with minimal cost and development overhead."><meta property="og:site_name" content="LoCave"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:title" content="ZPT - Revolutionary Electronics Production Testing Ecosystem"><meta property="twitter:description" content="ZPT is an electronics production testing ecosystem of products that helps developers, product manufactures and PCB assembly houses to deliver tested and issue free products to the market with minimal cost and development overhead."><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/index.jkd3c6Nu.css"><script type="module" src="/_astro/hoisted.rasoniT7.js"></script></head> <body>  <header class="header" data-astro-cid-j7pv25f6> <div class="logo" data-astro-cid-j7pv25f6> <!--img src="C:\Users\Luka\Downloads\locave\src\pages\Logo.png" alt="LoCave" width="120" height="40"--> </div> </header> <main data-astro-cid-j7pv25f6> <!-- Hero Section --> <section class="hero" data-astro-cid-j7pv25f6> <video autoplay loop muted playsinline class="hero-video" data-astro-cid-j7pv25f6> <source src="/_title-video.mp4" type="video/mp4" data-astro-cid-j7pv25f6> </video> <div class="video-overlay" data-astro-cid-j7pv25f6></div> <div class="hero-grid" data-astro-cid-j7pv25f6> <div class="hero-content" data-astro-cid-j7pv25f6> <h1 data-astro-cid-j7pv25f6>Transform Your Electronics Testing Process</h1> <p class="hero-subtitle" data-astro-cid-j7pv25f6>
+A complete ecosystem of hardware, firmware, and cloud solutions for seamless electronics production testing.
+</p> <div class="cta-group" data-astro-cid-j7pv25f6> <a href="#contact" class="cta-button" data-astro-cid-j7pv25f6>Request Demo</a> <a href="#features" class="cta-button secondary" data-astro-cid-j7pv25f6>Learn More</a> </div> </div> </div> </section> <!-- Benefits Section >
+		<section id="benefits" class="benefits">
+			<h2>Why Choose LoCave?</h2>
+			<div class="benefits-grid">
+				{benefits.map(benefit => (
+					<div class="benefit-card">
+						<div class="benefit-icon">{benefit.icon}</div>
+						<h3>{benefit.title}</h3>
+						<p>{benefit.description}</p>
+					</div>
+				))}
+			</div>
+		</section --> <!--Features Section --> <section id="features" class="features" data-astro-cid-j7pv25f6> <div class="features-grid" data-astro-cid-j7pv25f6> <div class="feature-content" data-astro-cid-j7pv25f6> <h2 data-astro-cid-j7pv25f6>How it works?</h2> <p data-astro-cid-j7pv25f6>Our comprehensive testing ecosystem seamlessly integrates hardware interfaces, automated testing procedures, and cloud-based monitoring to ensure reliable electronics production.</p> <ul data-astro-cid-j7pv25f6> <li data-astro-cid-j7pv25f6>Comprehensive Functional Validation</li> <li data-astro-cid-j7pv25f6>Seamless Integration into Development Process</li> <li data-astro-cid-j7pv25f6>Reduced Implementation Effort</li> <li data-astro-cid-j7pv25f6>Real-Time Monitoring and Firmware Validation</li> </ul> </div> <div class="feature-image" data-astro-cid-j7pv25f6> <img src="/_background.png" ) alt="ZPT automated electronics testing system in action." data-astro-cid-j7pv25f6> </div> </div> </section> <!-- Contact Section --> <section id="contact" class="contact" data-astro-cid-j7pv25f6> <h2 data-astro-cid-j7pv25f6>Transform Your Electronics Testing Process</h2> <p data-astro-cid-j7pv25f6>Streamlined traceability everywhere.</p> <form id="contact-form" class="contact-form" data-astro-cid-svshx33u> <div class="form-group" data-astro-cid-svshx33u> <label for="name" data-astro-cid-svshx33u>Full Name*</label> <input type="text" id="name" name="name" required data-astro-cid-svshx33u> </div> <div class="form-group" data-astro-cid-svshx33u> <label for="email" data-astro-cid-svshx33u>Email*</label> <input type="email" id="email" name="email" required data-astro-cid-svshx33u> </div> <div class="form-group" data-astro-cid-svshx33u> <label for="phone" data-astro-cid-svshx33u>Phone</label> <input type="text" id="phone" name="phone" data-astro-cid-svshx33u> </div> <div class="form-group" data-astro-cid-svshx33u> <label for="organization" data-astro-cid-svshx33u>Organization</label> <input type="text" id="organization" name="organization" data-astro-cid-svshx33u> </div> <button type="submit" class="cta-button" data-astro-cid-svshx33u>Inquire</button> </form> <script>
+document.getElementById('contact-form').addEventListener('submit', async (e) => {
+	e.preventDefault();
+	
+	const form = e.target;
+	const formData = new FormData(form);
+	
+	// Convert form data to URL-encoded string
+	const data = new URLSearchParams();
+	for (const [key, value] of formData.entries()) {
+		data.append(key, value.toString());
+	}
+	data.append('timestamp', new Date().toISOString());
+
+	try {
+		// Replace YOUR_SCRIPT_URL with the deployed Google Apps Script URL
+		const response = await fetch('https://script.google.com/macros/s/AKfycbwm9qNsrSf5pjrf40UBk8DUEY23vkzmrudEN7oMDhJKHIpH0zhs8sWDuWIS1BUcHMTq3g/exec', {
+			method: 'POST',
+			mode: 'no-cors',
+			body: data
+		});
+
+		// Clear the form
+		form.reset();
+		alert('Thank you for your submission!');
+	} catch (error) {
+		console.error('Error:', error);
+		alert('There was an error submitting the form. Please try again.');
+	}
+});
+</script>   <!-- The changes I made:
+
+1. Added `is:inline` to the script tag to properly handle client-side code in Astro
+2. Removed TypeScript syntax since we're using vanilla JavaScript
+3. Changed the data submission format to URL-encoded form data instead of JSON
+4. Removed the problematic Content-Type header
+5. Simplified the form handling code
+
+Also, you'll need to update the Google Apps Script to handle URL-encoded form data:
+
+```javascript
+function doPost(e) {
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  const data = e.parameter; // This now handles URL-encoded form data
+  
+  sheet.appendRow([
+    data.timestamp,
+    data.name,
+    data.email,
+    data.organization,
+  ]);
+  
+  return ContentService.createTextOutput('Success');
+}
+```
+
+Remember to:
+1. Deploy the updated Apps Script
+2. Replace 'YOUR_SCRIPT_URL' in the ContactForm.astro file with your actual deployed script URL
+
+This should now work correctly with G --> </section> </main>  </body></html> 
