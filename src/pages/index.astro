@@ -2,27 +2,30 @@
 import Layout from '../layouts/Layout.astro';
 import ContactForm from '../components/ContactForm.astro';
 
+const sources = {
+	title: "Transform Your Electronics Testing Process",
+	description: "A complete ecosystem of hardware, firmware, and cloud solutions for seamless electronics production testing.",
+	
+
+}
 const benefits = [
 	{
-		title: "5x Faster Deployment",
-		description: "Revolutionary fiber optic infrastructure that can be laid 5 times faster than traditional systems.",
-		icon: "⚡"
+		title: "Test-Driven Development",
+		description: "The ZPT ecosystem is designed to unify the PCBA testing between developers and assembly lines.",
+		icon: "✅",
 	},
 	{
-		title: "10x Cost Reduction",
-		description: "Significantly more cost-effective than traditional VHF systems, making cave communication accessible.",
-		icon: "💰"
+		title: "Affordable and Accessible",
+		description: "ZPT is making significant improvements in usability and pricing models to enable automated testing from day one.",
+		icon: "💰",
+
 	},
 	{
-		title: "Ultra-Lightweight",
-		description: "Carry up to 1km of infrastructure with just 8kg - perfect for challenging cave environments.",
-		icon: "🎯"
+		title: "Adaptable to new designs",
+		description: "Due to modular design, you can easily customize your ZPT system to new designs, unlocking rapid innovation.",
+		icon: "🚀",
+
 	},
-	{
-		title: "Smartphone Integration",
-		description: "Use your existing smartphones for underground communication - no specialized equipment needed.",
-		icon: "📱"
-	}
 ];
 ---
 
@@ -45,9 +48,9 @@ const benefits = [
 			<div class="hero-grid">
 
 				<div class="hero-content">
-					<h1>Transform Your Electronics Testing Process</h1>
+					<h1> {sources.title} </h1>
 					<p class="hero-subtitle">
-						A complete ecosystem of hardware, firmware, and cloud solutions for seamless electronics production testing.
+						{sources.description}
 					</p>
 					<div class="cta-group">
 						<a href="#contact" class="cta-button">Request Demo</a>
@@ -58,9 +61,34 @@ const benefits = [
 			</div>
 		</section>
 
-		<!-- Benefits Section >
+
+		<!--Features Section -->
+		<section id="features" class="features">
+			<div class="feature-content">
+				<!--h1>How it works?</h1-->
+				<h1 class="features-title">
+					Cloud controlled testing automation from day one.
+				</h1>
+				<h2 class="features-subtitle">
+					Easily customizable hardware testing solutions with scalable cloud capabilities empowers businesses to deliver high-quality products in an efficient and cost-effective way.				</h2>
+					<div class="features-image-grid">
+					<div class="feature-image">
+						<img src='/_production-setup.png') alt="ZPT automated electronics testing system in production." />
+						<h3>ZPT System </h3>
+						<p></p>
+					</div>
+					<div class="feature-image">
+						<img src='/_ZPT-cloud.png') alt="ZPT cloud." />
+						<h3>ZPT Cloud </h3>
+						<p></p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Benefits Section --->
 		<section id="benefits" class="benefits">
-			<h2>Why Choose LoCave?</h2>
+			<h2>Why ZPT?</h2>
 			<div class="benefits-grid">
 				{benefits.map(benefit => (
 					<div class="benefit-card">
@@ -70,27 +98,10 @@ const benefits = [
 					</div>
 				))}
 			</div>
-		</section -->
-
-		<!--Features Section -->
-		<section id="features" class="features">
-			<div class="features-grid">
-				<div class="feature-content">
-					<h2>How it works?</h2>
-					<p>Our comprehensive testing ecosystem seamlessly integrates hardware interfaces, automated testing procedures, and cloud-based monitoring to ensure reliable electronics production.</p>
-					<ul>
-						<li>Comprehensive Functional Validation</li>
-						<li>Seamless Integration into Development Process</li>
-						<li>Reduced Implementation Effort</li>
-						<li>Real-Time Monitoring and Firmware Validation</li>
-					</ul>
-				</div>
-				<div class="feature-image">
-					<img src='/_background.png') alt="ZPT automated electronics testing system in action." />
-				</div>
+			<div class="features-cta">
+				<a href="#contact" class="cta-button">Learn More</a>
 			</div>
 		</section>
-
 
 		<!-- Contact Section -->
 		<section id="contact" class="contact">
@@ -198,6 +209,11 @@ const benefits = [
 		gap: 1rem;
 	}
 
+	.original-button {
+	/* Optional: Style adjustments specific to the original button */
+		align-self: center; /* Adjust its position if needed */
+	}
+
 	.cta-button {
 		background: rgb(var(--primary));
 		color: white;
@@ -287,6 +303,7 @@ const benefits = [
 		gap: 2rem;
 		max-width: 1200px;
 		margin: 0 auto;
+		margin-bottom: 1cm;
 	}
 
 	.benefit-card {
@@ -299,61 +316,63 @@ const benefits = [
 	.benefit-icon {
 		font-size: 2rem;
 		margin-bottom: 1rem;
+		text-align: center;
 	}
 
 	.features {
 		padding: 4rem 2rem;
 		background: white;
+		text-align: center;
 	}
 
-	.features-grid {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 4rem;
-		max-width: 1200px;
-		margin: 0 auto;
-		align-items: center;
-	}
-
-	.feature-content {
-		max-width: 500px;
-	}
-
-	.features h2 {
+	.features-title {
 		font-size: 2.5rem;
-		margin-bottom: 2rem;
-	}
-
-	.features ul {
-		list-style-type: none;
-		padding: 0;
-	}
-
-	.features li {
-		margin-bottom: 1rem;
-		padding-left: 2rem;
-		position: relative;
-	}
-
-	.features li::before {
-		content: "✓";
-		position: absolute;
-		left: 0;
-		color: rgb(var(--primary));
+		margin-bottom: 3rem;
 		font-weight: bold;
 	}
 
+	.features-subtitle {
+		font-size: 1.5rem;
+		margin-bottom: 3rem;
+		font-weight: normal;
+	}
+
+	.features-image-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 2rem;
+		max-width: 1200px;
+		margin: 0 auto;
+	}
 	.feature-image {
+		max-width: 400px;
+		margin: 0 auto;
 		border-radius: 1rem;
 		overflow: hidden;
 		box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+		aspect-ratio: 1/1;
 	}
 
 	.feature-image img {
 		width: 100%;
 		height: 100%;
-		object-fit: cover;
+		object-fit: contain;
 		border-radius: 1rem;
+	}
+
+	.features-cta {
+		display: flex;
+		justify-content: center;
+	}
+
+	
+	
+	.page-subtitle {
+		font-size: 1.5rem;
+		margin-bottom: 2rem;
+		opacity: 0.9;
+		color: rgb(0, 0, 0);
+		z-index: 1;
 	}
 
 	.contact {
